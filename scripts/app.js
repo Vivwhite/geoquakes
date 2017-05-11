@@ -23,7 +23,8 @@ $(document).ready(function() {
 
     var marker = new google.maps.Marker({
       position: austin,
-      map: map
+      map: map,
+      icon: icon
     });
   }
 
@@ -55,9 +56,10 @@ function onSuccess(json){
       {
         lat: lat,
         lng: lng,
-        icon: icon
+
       },
-      map: map
+      map: map,
+      icon: icon
     });
     $('#info').append(`<p>${title}</p>`);
 
