@@ -1,6 +1,8 @@
 // define globals
 var weekly_quakes_endpoint = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson";
 var map;
+var icon = 'images/earthquake.png';
+// var icon = '/Users/vivi/Desktop/wdi/geoquakes/images/earthquake.png';
 
 $(document).ready(function() {
   console.log("Let's get coding!");
@@ -22,8 +24,8 @@ $(document).ready(function() {
     var marker = new google.maps.Marker({
       position: austin,
       map: map
-  });
-}
+    });
+  }
 
 
 
@@ -42,21 +44,18 @@ function getQuake() {
 }
 
 function onSuccess(json){
-  //console.log(json);
-  // var lat = json.features[0].geometry.coordinates[0];
-  // var lng = json.features[0].geometry.coordinates[1];
-  // console.log(lat + "  " + lng);
   // TODO: forEach (earthquake)
   for (i = 0; i < json.features.length; i++){
     var title = json.features[i].properties.title;
 
-    var lat = json.features[i].geometry.coordinates[0];
-    var lng = json.features[i].geometry.coordinates[1];
+    var lat = json.features[i].geometry.coordinates[1];
+    var lng = json.features[i].geometry.coordinates[0];
     var marker = new google.maps.Marker({
       position:
       {
         lat: lat,
-        lng: lng
+        lng: lng,
+        icon: icon
       },
       map: map
     });
